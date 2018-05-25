@@ -1,7 +1,6 @@
 export class SpeedTester {
   public view: { division: boolean; jobs: boolean; work_orders: boolean };
   public where: string[];
-  public counter: number = 0;
   constructor() {
     this.view = { division: false, jobs: false, work_orders: false };
     this.where = ['here'];
@@ -19,14 +18,13 @@ export class SpeedTester {
     this.where.splice(0, this.where.length);
     this.where.push('here');
   };
-  run = (fn: any): any => {
-    console.log('running');
-    this.counter++;
+  run(name: string, method: any, ...args: any[]): any {
+    console.log('running', name);
     let iterations = 1000000;
-    console.time(`Function #${this.counter}`);
+    console.time(`Function #${name}`);
     for (var i = 0; i < iterations; i++) {
-      fn();
+      method.apply(this, args);
     }
-    console.timeEnd(`Function #${this.counter}`);
-  };
+    console.timeEnd(`Function #${name}`);
+  }
 }
