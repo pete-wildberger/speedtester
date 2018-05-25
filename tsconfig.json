@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": false,
+        "noImplicitAny": true,
+        "skipLibCheck": true,
+        "outDir": "./dist",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
+    },
+    "compileOnSave": true,
+    "exclude": [],
+    "include": [
+        "./src/main.ts"
+    ]
+}
