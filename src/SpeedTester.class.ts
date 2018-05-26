@@ -6,13 +6,23 @@ export class SpeedTester {
   constructor(config: ST_config_type) {
     Number.isInteger(config.iterations) ? (this._iterations = config.iterations) : process.exit(1);
   }
-  run = (name: string, method: any, ...args: any[]): any => {
-    console.log('running', name);
+  speedTest = (method: any, ...args: any[]): any => {
+    const start = new Date().getTime();
     let iterations = Number(this._iterations);
-    console.time(`Function #${name}`);
     for (var i = 0; i < iterations; i++) {
       method.apply(null, args);
     }
-    console.timeEnd(`Function #${name}`);
+    return new Date().getTime() - start;
+  };
+  run = (name: string, method: any, ...args: any[]): any => {
+    let results: number[] = [];
+    for (var i = 0; i < 10; i++) {
+      results.push(this.speedTest(method, args));
+    }
+    const sum: number = results.reduce(function(a, b) {
+      return a + b;
+    });
+    const avg: number = sum / results.length;
+    console.log(`${name} averages ${avg}ms`);
   };
 }
