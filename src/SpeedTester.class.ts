@@ -1,30 +1,18 @@
+export interface ST_config_type {
+  iterations: number;
+}
 export class SpeedTester {
-  public view: { division: boolean; jobs: boolean; work_orders: boolean };
-  public where: string[];
-  constructor() {
-    this.view = { division: false, jobs: false, work_orders: false };
-    this.where = ['here'];
+  private _iterations: number;
+  constructor(config: ST_config_type) {
+    Number.isInteger(config.iterations) ? (this._iterations = config.iterations) : process.exit(1);
   }
-
-  reassign_ind = () => {
-    this.view.division = true;
-    this.view.jobs = true;
-    this.view.work_orders = true;
-  };
-  reassign_once = () => {
-    this.view = { division: true, jobs: true, work_orders: true };
-  };
-  arr_assign = () => {
-    this.where.splice(0, this.where.length);
-    this.where.push('here');
-  };
-  run(name: string, method: any, ...args: any[]): any {
+  run = (name: string, method: any, ...args: any[]): any => {
     console.log('running', name);
-    let iterations = 1000000;
+    let iterations = Number(this._iterations);
     console.time(`Function #${name}`);
     for (var i = 0; i < iterations; i++) {
-      method.apply(this, args);
+      method.apply(null, args);
     }
     console.timeEnd(`Function #${name}`);
-  }
+  };
 }
