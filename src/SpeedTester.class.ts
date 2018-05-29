@@ -9,7 +9,7 @@ export class SpeedTester {
     Number.isInteger(config.iterations) ? (this._iterations = config.iterations) : process.exit(1);
   }
 
-  speedTest = (method: Function, ...args: any[]): any => {
+  speedTest = (method: Function, ...args: any[]): number => {
     let result: number;
     let iterations: number = Number(this._iterations);
     const obs = new PerformanceObserver((items: any) => {
@@ -29,7 +29,7 @@ export class SpeedTester {
     return result;
   };
 
-  run = (name: string, method: Function, ...args: any[]): any => {
+  run = (name: string, method: Function, ...args: any[]): void => {
     let results: number[] = [];
     for (let i: number = 0; i < 10; i++) {
       results.push(this.speedTest(method, args));
