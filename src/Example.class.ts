@@ -1,21 +1,13 @@
 export class ExampleClass {
-  public view: { division: boolean; jobs: boolean; work_orders: boolean };
-  public where: string[];
-  constructor() {
-    this.view = { division: false, jobs: false, work_orders: false };
-    this.where = ['here'];
-  }
+  constructor() {}
 
-  reassign_ind = () => {
-    this.view.division = true;
-    this.view.jobs = true;
-    this.view.work_orders = true;
+  number_method = (str: string): number => {
+    return Number(str);
   };
-  reassign_once = () => {
-    this.view = { division: true, jobs: true, work_orders: true };
+  parse_int = (str: string): number => {
+    return parseFloat(str);
   };
-  arr_assign = () => {
-    this.where.splice(0, this.where.length);
-    this.where.push('here');
+  plus_sign = (str: string): number => {
+    return +str;
   };
 }

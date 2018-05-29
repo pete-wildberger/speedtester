@@ -10,10 +10,10 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
     "lib": ["es2015"],
-    "outDir": "./dist",
+    "outDir": "../speedtester/dist",
     "typeRoots": ["node_modules/@types"]
   },
   "compileOnSave": true,
   "exclude": [],
-  "include": ["./src/test.ts"]
+  "include": ["./index.ts"]
 }
