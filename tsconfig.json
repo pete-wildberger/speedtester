@@ -15,5 +15,5 @@
   },
   "compileOnSave": true,
   "exclude": [],
-  "include": ["./src/test.ts"]
+  "include": ["./index.ts"]
 }
