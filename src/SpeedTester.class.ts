@@ -9,9 +9,9 @@ export class SpeedTester {
     Number.isInteger(config.iterations) ? (this._iterations = config.iterations) : process.exit(1);
   }
 
-  speedTest = (method: any, ...args: any[]): any => {
+  speedTest = (method: Function, ...args: any[]): any => {
     let result: number;
-    let iterations = Number(this._iterations);
+    let iterations: number = Number(this._iterations);
     const obs = new PerformanceObserver((items: any) => {
       result = items.getEntries()[0].duration;
       performance.clearMarks();
@@ -19,7 +19,7 @@ export class SpeedTester {
     obs.observe({ entryTypes: ['measure'] });
     // start
     performance.mark('start');
-    for (var i = 0; i < iterations; i++) {
+    for (let i: number = 0; i < iterations; i++) {
       method.apply(null, args);
     }
     // finish
@@ -29,9 +29,9 @@ export class SpeedTester {
     return result;
   };
 
-  run = (name: string, method: any, ...args: any[]): any => {
+  run = (name: string, method: Function, ...args: any[]): any => {
     let results: number[] = [];
-    for (var i = 0; i < 10; i++) {
+    for (let i: number = 0; i < 10; i++) {
       results.push(this.speedTest(method, args));
     }
     // sum and average performance results
