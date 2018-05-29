@@ -35,11 +35,13 @@ export class SpeedTester {
       results.push(this.speedTest(method, args));
     }
     // sum and average performance results
-    const sum: number = results.reduce((a, b) => {
-      return a + b;
-    });
-    const avg: number = sum / results.length;
+    const avg: number =
+      results.reduce((a, b) => {
+        return a + b;
+      }) / results.length;
+
     // console.log(performance);
-    console.log(`${name} averages ${avg}ms`);
+    console.log('\x1b[36m', `${name} averages ${avg}ms`);
+    console.log('\x1b[0m');
   };
 }
