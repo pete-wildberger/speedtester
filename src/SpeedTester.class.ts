@@ -1,11 +1,5 @@
 const { PerformanceObserver, performance } = require('perf_hooks');
 
-const obs = new PerformanceObserver((items: any) => {
-  console.log(items.getEntries()[0].duration);
-  performance.clearMarks();
-});
-obs.observe({ entryTypes: ['measure'] });
-
 export interface ST_config_type {
   iterations: number;
 }
@@ -17,18 +11,21 @@ export class SpeedTester {
 
   speedTest = (method: any, ...args: any[]): any => {
     let result: number;
+    let iterations = Number(this._iterations);
     const obs = new PerformanceObserver((items: any) => {
       result = items.getEntries()[0].duration;
       performance.clearMarks();
     });
     obs.observe({ entryTypes: ['measure'] });
-    let iterations = Number(this._iterations);
-    performance.mark('A');
+    // start
+    performance.mark('start');
     for (var i = 0; i < iterations; i++) {
       method.apply(null, args);
     }
-    performance.mark('B');
-    performance.measure('A to B', 'A', 'B');
+    // finish
+    performance.mark('finish');
+    performance.measure('start to finish', 'start', 'finish');
+    // return duration
     return result;
   };
 
@@ -37,7 +34,8 @@ export class SpeedTester {
     for (var i = 0; i < 10; i++) {
       results.push(this.speedTest(method, args));
     }
-    const sum: number = results.reduce(function(a, b) {
+    // sum and average performance results
+    const sum: number = results.reduce((a, b) => {
       return a + b;
     });
     const avg: number = sum / results.length;

@@ -9,9 +9,9 @@ const config: ST_config_type = {
 const main = (): void => {
   const tester = new SpeedTester(config);
   const example = new ExampleClass();
-  tester.run('3', example.arr_assign);
   tester.run('1', example.reassign_ind);
   tester.run('2', example.reassign_once);
+  tester.run('3', example.arr_assign);
 };
 
 main();
