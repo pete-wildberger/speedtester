@@ -10,7 +10,7 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
     "lib": ["es2015"],
-    "outDir": "./dist",
+    "outDir": "./lib",
     "typeRoots": ["node_modules/@types"]
   },
   "compileOnSave": true,
