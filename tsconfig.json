@@ -10,10 +10,10 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
     "lib": ["es2015"],
-    "outDir": "./lib",
+    "outDir": "./",
     "typeRoots": ["node_modules/@types"]
   },
-  "compileOnSave": true,
+  "compileOnSave": false,
   "exclude": [],
-  "include": ["./index.ts"]
+  "include": ["./lib/index.ts"]
 }

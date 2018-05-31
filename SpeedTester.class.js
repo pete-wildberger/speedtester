@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var _a = require('perf_hooks'), PerformanceObserver = _a.PerformanceObserver, performance = _a.performance;
-var SpeedTester = /** @class */ (function () {
+var SpeedTester = (function () {
     function SpeedTester(config) {
         var _this = this;
         this.run = function (name, method) {

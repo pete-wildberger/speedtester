@@ -1,7 +1,7 @@
 {
-  "name": "testing",
+  "name": "Speeder",
   "version": "1.0.0",
-  "main": "./lib/index.js",
+  "main": "./index.js",
   "license": "MIT",
   "types": "./lib/index.d.ts",
   "dependencies": {
