@@ -4,6 +4,7 @@
   "main": "./index.js",
   "license": "MIT",
   "types": "./lib/index.d.ts",
+  "author": "Peter Wildberger",
   "dependencies": {
     "@types/node": "^10.1.2"
   },
